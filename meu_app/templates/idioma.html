@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ idioma.capitalize() }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ idioma.capitalize() }}</h1>
+        <button id="dark-toggle" class="toggle-dark">🌙</button>
+    </header>
+    <main>
+        <h2>Palavras</h2>
+        <div class="lista">
+            {% for item in dados.palavras %}
+            <div class="item">
+                <strong>{{ item.texto }}</strong> - {{ item.romaji }} - {{ item.pt }}<br>
+                <audio controls>
+                    <source src="{{ url_for('get_audio', filename=idioma + '_' + item.romaji|replace(' ', '_') + '.mp3') }}" type="audio/mpeg">
+                </audio>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h2>Frases</h2>
+        <div class="lista">
+            {% for item in dados.frases %}
+            <div class="item">
+                <strong>{{ item.texto }}</strong> - {{ item.romaji }} - {{ item.pt }}<br>
+                <audio controls>
+                    <source src="{{ url_for('get_audio', filename=idioma + '_' + item.romaji|replace(' ', '_') + '.mp3') }}" type="audio/mpeg">
+                </audio>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a class="voltar" href="/">← Voltar</a>
+    </main>
+    <script>
+        const toggle = document.getElementById("dark-toggle");
+        toggle?.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            localStorage.setItem("dark", document.body.classList.contains("dark"));
+        });
+        if (localStorage.getItem("dark") === "true") {
+            document.body.classList.add("dark");
+        }
+    </script>
+</body>
+</html>

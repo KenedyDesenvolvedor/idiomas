@@ -1,0 +1,114 @@
+:root {
+    --bg: #f4f4f4;
+    --text: #000;
+    --card: #fff;
+    --primary: #007BFF;
+    --hover: #0056b3;
+}
+
+body.dark {
+    --bg: #1e1e1e;
+    --text: #f4f4f4;
+    --card: #2c2c2c;
+    --primary: #4e9af1;
+    --hover: #2f76c4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 1em;
+    text-align: center;
+    position: relative;
+}
+
+.toggle-dark {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 0.3em 0.7em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+main {
+    padding: 2em;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.idioma-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+.idioma {
+    background-color: var(--primary);
+    color: white;
+    padding: 1em 2em;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.idioma:hover {
+    background-color: var(--hover);
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    max-width: 600px;
+    margin: auto;
+}
+
+.item {
+    background-color: var(--card);
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+audio {
+    margin-top: 0.5em;
+}
+
+.voltar {
+    display: block;
+    text-align: center;
+    margin-top: 2em;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .idioma {
+        width: 90%;
+        text-align: center;
+    }
+
+    .toggle-dark {
+        top: 0.5em;
+        right: 0.5em;
+        font-size: 0.8em;
+    }
+}
